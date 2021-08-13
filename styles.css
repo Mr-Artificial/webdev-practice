@@ -1,7 +1,28 @@
+@font-face {
+    font-family: "SK Porsche";
+    src: url("fonts/SK porsche.eot"); /* IE9*/
+    src: url("fonts/SK porsche.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("fonts/SK porsche.woff2") format("woff2"), /* chrome、firefox */
+    url("fonts/SK porsche.woff") format("woff"), /* chrome、firefox */
+    url("fonts/SK porsche.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url("fonts/SK porsche.svg#SK Porsche") format("svg"); /* iOS 4.1- */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
+    background: #e8eaec;
 }
 
 nav {
@@ -9,25 +30,32 @@ nav {
     top: 0;
     left: 0;
     width: 100%;
-    height: 80px;
-    padding: 8px 80px;
+    height: 100px;
     box-sizing: border-box;
     transition: 0.3s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
 }
 
 nav.black {
     background: rgba(0, 0, 0, 0.8);
-    height: 80px;
-    padding: 8px 80px;
+    height: 100px;
+    padding: 1rem 1.5rem;
 }
 
 nav .logo {
     padding: 22px 20px;
-    height: 64px;
+    height: 80px;
     float: left;
-    font-size: 24px;
+    font-size: 1.5rem;
     transition: 0.3s;
     color: #fff;
+    font-family: "SK Porsche" !important;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 nav.black .logo {
@@ -40,16 +68,19 @@ nav ul {
     margin: 0;
     padding: 0;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 nav ul li {
     list-style: none;
-    display: inline-block;
+    margin-left: 1rem;
 }
 
 nav ul li a {
+    line-height: 80px;
     color: #fff;
-    padding: 10px 24px;
+    padding: 12px 30px;
     text-decoration: none;
     text-transform: uppercase;
     transition: 0.3s;
@@ -63,11 +94,65 @@ nav ul li a:focus {
     outline: none;
 }
 
-nav ul li a.active {
-    background-color: #7f5a83;
-    background-image: linear-gradient(315deg, #7f5a83 0%, #0d324d 74%);
-    color: #fff;
-    border-radius: 6px;
+nav ul li a:hover {
+    color: #afafaf;
+    transition: 0.3s;
+}
+
+.hamburger {
+    display: none;
+}
+
+.line {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: #fff;
+}
+
+/* NavBar Responsiveness */
+@media only screen and (max-width: 1000px){
+    .nav__menu{
+        position: fixed;
+        left: -100%;
+        top: 5rem;
+        flex-direction: column;
+        background-color: rgba(0, 0, 0, 0.8);
+        width: 100%;
+        border-radius: 10px;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+    }
+
+    .nav__menu.active {
+        left:0;
+    }
+
+    nav ul li {
+        margin: 2.5rem 0;
+    }
+
+    .hamburger {
+        display: block;
+        cursor: pointer;
+    }
+
+    /* Hamburger click animation */
+    .hamburger.active .line:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .line:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .line:nth-child(3) {
+        transform: translateY(8px) rotate(-45deg);
+    }
 }
 
 section.sec1 {
@@ -77,3 +162,17 @@ section.sec1 {
     background-size: cover;
     background-position: center;
 }
+
+.content {
+    margin-top: 80px;
+}
+
+.content p {
+    width: 900px;
+    margin: 30px auto;
+    text-align: justify;
+    font-size: 2ch;
+    line-height: 30px;
+}
+
+
